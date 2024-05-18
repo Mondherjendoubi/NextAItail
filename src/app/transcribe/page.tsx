@@ -122,12 +122,13 @@ const Translation: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-col w-full items-center mt-4 gap-4">
-          <audio
-            controls
-            src={audioUrl ?? undefined}
-            disabled={!audioUrl}
-            className="w-full"
-          />
+          {audioUrl ? (
+            <audio controls src={audioUrl} className="w-full" />
+          ) : (
+            <div className="w-full h-12 bg-gray-300 flex items-center justify-center">
+              Audio not available
+            </div>
+          )}
           <button
             disabled={!audioUrl}
             onClick={transcribeAudio}
